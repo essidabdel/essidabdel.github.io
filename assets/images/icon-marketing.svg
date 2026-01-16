@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<!-- Optimized Font Awesome Icon -->
+  <defs>
+    <!-- Linear Gradient Definitions -->
+    <linearGradient id="paint1_linear" x1="1.6" y1="0" x2="31.8" y2="17.7" gradientUnits="userSpaceOnUse">
+      <stop offset="0.26" stop-color="#FFDB6E"/>
+      <stop offset="1" stop-color="#F7F777"/>
+    </linearGradient>
+
+    <!-- Stronger Glow Filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Path with Yellow Glowing Border -->
+  <path fill="url(#paint1_linear)" 
+        stroke="#FFBC5E" 
+        stroke-width="10" 
+        fill-rule="evenodd" 
+        clip-rule="evenodd" 
+        filter="url(#glow)"
+        d="M480 32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9L381.7 53c-48 48-113.1 75-181 75l-8.7 0-32 0-96 0c-35.3 0-64 28.7-64 64l0 96c0 35.3 28.7 64 64 64l0 128c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-128 8.7 0c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-147.6c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4L480 32zm-64 76.7L416 240l0 131.3C357.2 317.8 280.5 288 200.7 288l-8.7 0 0-96 8.7 0c79.8 0 156.5-29.8 215.3-83.3z"/>
+</svg>
