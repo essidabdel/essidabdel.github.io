@@ -734,7 +734,7 @@
 
             
 
-            <li class="certificate-post-item">
+            <li class="certificate-post-item" data-certificate-item data-certificate-img="./assets/images/certif_micr.png">
               <a href="#">
 
                 <figure class="certificate-banner-box">
@@ -764,7 +764,7 @@
 
             
 
-            <li class="certificate-post-item">
+            <li class="certificate-post-item" data-certificate-item data-certificate-img="./assets/images/certiif_ui_ux.png">
               <a href="#">
 
                 <figure class="certificate-banner-box">
@@ -1034,10 +1034,27 @@
 
   </main>
 
+  <!-- Certificate Modal -->
+  <div class="certificate-modal" data-certificate-modal>
+    <div class="certificate-modal-overlay" data-certificate-overlay></div>
+    <div class="certificate-modal-content">
+      <button class="certificate-modal-close" data-certificate-close>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+      <img src="" alt="Certificate" data-modal-certificate-img>
+    </div>
+  </div>
 
+  <!-- Scroll to Top Button -->
+  <button class="scroll-top-btn" data-scroll-top>
+    <ion-icon name="chevron-up-outline"></ion-icon>
+  </button>
 
-
-
+  <!-- Dark Mode Toggle -->
+  <button class="theme-toggle-btn" data-theme-toggle title="Toggle Theme">
+    <ion-icon name="moon-outline" class="moon"></ion-icon>
+    <ion-icon name="sunny-outline" class="sun"></ion-icon>
+  </button>
 
   <!--
     - custom js link

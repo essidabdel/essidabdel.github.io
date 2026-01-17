@@ -159,3 +159,127 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+
+// Certificate Modal Functionality
+const initCertificateModal = function() {
+  const certificateItems = document.querySelectorAll("[data-certificate-item]");
+  const certificateModal = document.querySelector("[data-certificate-modal]");
+  const certificateOverlay = document.querySelector("[data-certificate-overlay]");
+  const certificateClose = document.querySelector("[data-certificate-close]");
+  const certificateImg = document.querySelector("[data-modal-certificate-img]");
+
+  if (!certificateModal || !certificateImg) return;
+
+  const toggleCertificateModal = function() {
+    certificateModal.classList.toggle("active");
+  }
+
+  // Add click event to all certificate items
+  certificateItems.forEach(function(item) {
+    item.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const imgSrc = this.getAttribute("data-certificate-img");
+      if (imgSrc) {
+        certificateImg.src = imgSrc;
+        certificateImg.alt = this.querySelector("img")?.alt || "Certificate";
+        toggleCertificateModal();
+      }
+    });
+  });
+
+  // Close certificate modal
+  if (certificateClose) {
+    certificateClose.addEventListener("click", function(e) {
+      e.preventDefault();
+      toggleCertificateModal();
+    });
+  }
+  
+  if (certificateOverlay) {
+    certificateOverlay.addEventListener("click", toggleCertificateModal);
+  }
+
+  // Close on Escape key
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape" && certificateModal.classList.contains("active")) {
+      toggleCertificateModal();
+    }
+  });
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCertificateModal);
+} else {
+  initCertificateModal();
+}
+
+
+
+// Scroll to Top Button
+const scrollTopBtn = document.querySelector("[data-scroll-top]");
+
+window.addEventListener("scroll", function() {
+  if (window.scrollY > 300) {
+    scrollTopBtn.classList.add("active");
+  } else {
+    scrollTopBtn.classList.remove("active");
+  }
+});
+
+scrollTopBtn.addEventListener("click", function() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+
+
+// Dark Mode Toggle
+const themeToggleBtn = document.querySelector("[data-theme-toggle]");
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference
+const currentTheme = localStorage.getItem("theme") || "dark";
+htmlElement.setAttribute("data-theme", currentTheme);
+
+themeToggleBtn.addEventListener("click", function() {
+  const currentTheme = htmlElement.getAttribute("data-theme");
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  
+  htmlElement.setAttribute("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme);
+});
+
+
+
+// Scroll Animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("animate-in");
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+// Observe elements
+document.addEventListener("DOMContentLoaded", function() {
+  const animatedElements = document.querySelectorAll(
+    ".service-item, .timeline-item, .project-item, .certificate-post-item, .about-text p, .skills-item"
+  );
+  
+  animatedElements.forEach(el => {
+    el.classList.add("animate-on-scroll");
+    observer.observe(el);
+  });
+});
